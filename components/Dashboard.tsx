@@ -9,7 +9,7 @@ import { MonthlyChart } from './MonthlyChart';
 import { CategoryBreakdown } from './CategoryBreakdown';
 import { Recommendations } from './Recommendations';
 import { TransactionList } from './TransactionList';
-import { RefreshCw } from 'lucide-react';
+import { RefreshCw, Lock } from 'lucide-react';
 
 type Period = '30' | '90' | '180' | 'all';
 
@@ -87,9 +87,21 @@ export function Dashboard({ data, lastUpdated }: Props) {
             </div>
           </div>
 
-          <div className="hidden sm:flex items-center gap-1.5 text-xs text-muted">
-            <RefreshCw size={12} />
-            <span>Updated {lastUpdatedFmt}</span>
+          <div className="flex items-center gap-3">
+            <div className="hidden sm:flex items-center gap-1.5 text-xs text-muted">
+              <RefreshCw size={12} />
+              <span>Updated {lastUpdatedFmt}</span>
+            </div>
+            <button
+              onClick={async () => {
+                await fetch('/api/logout', { method: 'POST' });
+                window.location.href = '/login';
+              }}
+              title="Lock"
+              className="text-muted hover:text-white transition-colors p-1.5 rounded-lg hover:bg-[#1e1e30]"
+            >
+              <Lock size={15} />
+            </button>
           </div>
         </div>
       </header>
