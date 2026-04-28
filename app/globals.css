@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --bg: #0d0d14;
+  --card: #14141f;
+  --border: #1e1e30;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg);
+  color: #f1f5f9;
+  font-family: 'Inter', system-ui, sans-serif;
+  min-height: 100vh;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: #2d2d45; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #4a4a6a; }
+
+/* Glass card effect */
+.glass-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  backdrop-filter: blur(12px);
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6, #06b6d4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Animated number */
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.count-up { animation: countUp 0.5s ease-out forwards; }
+
+/* Gradient border on hover */
+.hover-glow:hover {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 1px #6366f133, 0 4px 24px #6366f122;
+  transition: all 0.2s;
+}
+
+/* Priority badge colours */
+.badge-high   { background: #ef444420; color: #ef4444; border: 1px solid #ef444440; }
+.badge-medium { background: #f59e0b20; color: #f59e0b; border: 1px solid #f59e0b40; }
+.badge-low    { background: #10b98120; color: #10b981; border: 1px solid #10b98140; }
+
+/* Table hover */
+.table-row-hover:hover { background: #1c1c2e; }
+
+/* Progress bar animation */
+@keyframes growWidth {
+  from { width: 0; }
+}
+.animate-progress { animation: growWidth 0.8s ease-out forwards; }
