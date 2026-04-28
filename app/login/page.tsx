@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import { useRouter } from 'next/navigation';
 import { Delete } from 'lucide-react';
 
 const PIN_LENGTH = 4;
@@ -11,7 +10,6 @@ export default function LoginPage() {
   const [error, setError]   = useState('');
   const [shake, setShake]   = useState(false);
   const [loading, setLoading] = useState(false);
-  const router = useRouter();
 
   const submit = useCallback(async (fullPin: string) => {
     setLoading(true);
@@ -24,8 +22,7 @@ export default function LoginPage() {
       const data = await res.json();
 
       if (res.ok) {
-        router.push('/');
-        router.refresh();
+        window.location.href = '/';
       } else {
         setError(data.error ?? 'Wrong PIN');
         setShake(true);
@@ -38,7 +35,7 @@ export default function LoginPage() {
     } finally {
       setLoading(false);
     }
-  }, [router]);
+  }, []);
 
   const addDigit = useCallback((digit: string) => {
     if (loading) return;
