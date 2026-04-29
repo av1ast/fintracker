@@ -56,5 +56,5 @@ export default async function Home() {
 
   const financialData = parseCSV(data);
 
-  return <Dashboard data={financialData} lastUpdated={new Date().toISOString()} />;
+  return <Dashboard initialData={financialData} initialUpdated={new Date().toISOString()} />;
 }
